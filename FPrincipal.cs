@@ -9,7 +9,6 @@ using Org.BouncyCastle.Asn1.X509;
 using Org.BouncyCastle.Pkcs;
 using Org.BouncyCastle.OpenSsl;
 using Microsoft.Extensions.Configuration;
-using System.Security.Authentication;
 using Org.BouncyCastle.Crypto.Parameters;
 using Newtonsoft.Json.Linq;
 
@@ -223,8 +222,6 @@ namespace Api_Itau_V2
                 // Configurar o HttpClientHandler
                 var handler = new HttpClientHandler();
                 handler.ClientCertificates.Add(certWithKey);
-                handler.SslProtocols = SslProtocols.Tls12;
-                handler.ServerCertificateCustomValidationCallback = (message, cert, chain, errors) => true;
 
                 // Criar o HttpClient com o handler configurado
                 var client = new HttpClient(handler);
